@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Instance {
+  id                  String    @id @default(uuid())
+  cloud               String
+  region              String
+  shade_instance_type String
+  cloud_instance_type String
+  cloud_assigned_id   String
+  shade_cloud         Boolean
+  name                String
+  configuration       String    // JSON string
+  ip                  String
+  ssh_user            String
+  ssh_port            Int
+  status              String
+  cost_estimate       Float
+  hourly_price        Int
+  launch_configuration String   // JSON string
+  created_at          DateTime  @default(now())
+  deleted_at          DateTime? @updatedAt
+}
